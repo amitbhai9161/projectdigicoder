@@ -1,0 +1,249 @@
+DATABASE
+========
+APPLICATION/WEBSITE(TEXT)
+
+TO STORE DATA/INFORMATION
+=========================
+ONLINE SHOPING
+===============
+
+TABLE
+=====
+PRODUCTS
+CUSTUMERS
+ORDERS
+
+
+
+========
+COLLEGE
+
+TABLE STUDENT
+NAME
+BRANCH                                     XAMPP= -X(CROSS) APACHE MYSQL PHP PERL
+MOBILE NO.
+DOB
+YEAR
+
+================
+MY SQL
+ NO SQL
+SQLITE
+ORACLE
+MONGODB
+MARIA DB
+
+
+
+Setting environment for using XAMPP for Windows.
+Amit@AMIT c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database db15;
+ERROR 1007 (HY000): Can't create database 'db15'; database exists
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db15               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.036 sec)
+
+MariaDB [(none)]> use db15;
+Database changed
+MariaDB [db15]> create table student
+    -> (
+    -> id int(10),
+    -> name varchar(20)
+    -> );
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [db15]> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(10)     | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.028 sec)
+
+MariaDB [db15]> show tables;
++----------------+
+| Tables_in_db15 |
++----------------+
+| student        |
++----------------+
+1 row in set (0.002 sec)
+
+MariaDB [db15]> show columns from student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(10)     | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.028 sec)
+
+MariaDB [db15]> alter table student add mobile varchar(12);
+Query OK, 0 rows affected (0.011 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int(10)     | YES  |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| mobile | varchar(12) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.027 sec)
+
+MariaDB [db15]> alter table student drop mobile;
+Query OK, 0 rows affected (0.035 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(10)     | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.025 sec)
+
+MariaDB [db15]> alter table student change id rollno int(10);
+Query OK, 0 rows affected (0.011 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int(10)     | YES  |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.020 sec)
+
+MariaDB [db15]> insert into student(rollno,name)values(12,'amit');
+Query OK, 1 row affected (0.056 sec)
+
+MariaDB [db15]> select * from student;
++--------+------+
+| rollno | name |
++--------+------+
+|     12 | amit |
++--------+------+
+1 row in set (0.002 sec)
+
+MariaDB [db15]> insert into student(rollno,name)values(22,'amit'),(23,'shiva');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> select * from student;
++--------+-------+
+| rollno | name  |
++--------+-------+
+|     12 | amit  |
+|     22 | amit  |
+|     23 | shiva |
++--------+-------+
+3 rows in set (0.002 sec)
+
+MariaDB [db15]> insert into student(rollno,name)values(22,'amit'),(23,'shiva'),(44,'santosh');
+Query OK, 3 rows affected (0.005 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> select * from student;
++--------+---------+
+| rollno | name    |
++--------+---------+
+|     12 | amit    |
+|     22 | amit    |
+|     23 | shiva   |
+|     22 | amit    |
+|     23 | shiva   |
+|     44 | santosh |
++--------+---------+
+6 rows in set (0.001 sec)
+
+MariaDB [db15]> insert into (rollno,name)values(99,'ajay');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(rollno,name)values(99,'ajay')' at line 1
+MariaDB [db15]> select * from student;
++--------+---------+
+| rollno | name    |
++--------+---------+
+|     12 | amit    |
+|     22 | amit    |
+|     23 | shiva   |
+|     22 | amit    |
+|     23 | shiva   |
+|     44 | santosh |
++--------+---------+
+6 rows in set (0.002 sec)
+
+MariaDB [db15]> insert into student(rollno,name)values(32,'ajay'),(35,'kavita'),(94,'divya');
+Query OK, 3 rows affected (0.005 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [db15]> select * from student;
++--------+---------+
+| rollno | name    |
++--------+---------+
+|     12 | amit    |
+|     22 | amit    |
+|     23 | shiva   |
+|     22 | amit    |
+|     23 | shiva   |
+|     44 | santosh |
+|     32 | ajay    |
+|     35 | kavita  |
+|     94 | divya   |
++--------+---------+
+9 rows in set (0.001 sec)
+
+MariaDB [db15]> drop database db15;
+Query OK, 1 row affected (0.049 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.003 sec)
+
+MariaDB [(none)]> create database a12;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use a12;
+Database changed
+MariaDB [a12]> create table client
+    -> (
+    -> clientno int(10),
+    -> name varchar(20),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 5
+MariaDB [a12]> ^A
+
+
+
+
+
+

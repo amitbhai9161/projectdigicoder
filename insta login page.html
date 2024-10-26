@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <link rel="stylesheet" href="styles.css">
+
+<style>
+    /* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Login Box Styling */
+.login-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Title Styling */
+.login-box h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields Styling */
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button Styling */
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3897f0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #3578e5;
+}
+
+/* Forgot Password Link Styling */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #3897f0;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+</style>
+<script>
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from submitting the traditional way
+
+    // Get username and password values
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Basic validation (could be improved)
+    if (username && password) {
+        alert('Login successful!');
+        // You would generally handle login here (e.g., send data to a server)
+    } else {
+        alert('Please enter both username and password.');
+    }
+});
+   
+</script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Instagram</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <p class="forgot-password"><a href="#">Forgot password?</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

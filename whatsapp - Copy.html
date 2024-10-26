@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e5ddd5;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        .sidebar {
+            width: 300px;
+            background: #ffffff;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .chat {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+        }
+        .chat-header {
+            background: #25d366;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-header img {
+            border-radius: 50%;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .message.user {
+            text-align: right;
+        }
+        .message p {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+        .message.user p {
+            background: #dcf8c6;
+        }
+        .message.other p {
+            background: #fff;
+        }
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+        }
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .chat-footer button {
+            background: #25d366;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Chats</h2>
+            <div class="chat-preview">
+                <p><strong>Friend 1</strong><br>Hey there!</p>
+            </div>
+            <div class="chat-preview">
+                <p><strong>Friend 2</strong><br>What's up?</p>
+            </div>
+        </div>
+
+        <!-- Chat -->
+        <div class="chat">
+            <div class="chat-header">
+                <img src="https://via.placeholder.com/40" alt="User">
+                <h3>Friend 1</h3>
+            </div>
+            <div class="chat-body">
+                <div class="message user">
+                    <p>Hi! How are you?</p>
+                </div>
+                <div class="message other">
+                    <p>I'm good, thanks! How about you?</p>
+                </div>
+                <div class="message user">
+                    <p>I'm great! Just working on a project.</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type a message">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

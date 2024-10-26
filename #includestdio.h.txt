@@ -1,0 +1,13 @@
+#include<stdio.h>
+int int main()
+{
+	int a,b;
+	printf("inter the value of a:" );
+	scanf("%d",&a);
+	printf("inter value of b:");
+	scanf("%d",%b);
+
+	//logic
+	int c=a+b;
+	printf("=%d",c);
+}

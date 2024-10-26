@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            background: black;
+        }
+        .container{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .bubbles{
+            position:relative;
+            display: flex;
+        }
+        .bubbles span{
+           position: relative;
+           width: 30px;
+           height: 30px;
+           background: paleturquoise;
+           margin: 0 4px ;
+           border-radius: 50%;
+           box-shadow: 0 0 0 10px blueviolet,
+           0 0 50px royalblue,0 0 100px blueviolet;
+           animation: animate 1s linear infinite;
+           
+           animation-duration: cals(10s / var(--i)) ;
+
+        }
+        .bubbles span:nth-child(even){
+            background: paleturquoise;
+            box-shadow: 0 0 0 10px rgb(162, 14, 93),
+           0 0 50px royalblue,0 0 100px rgb(125, 225, 119);
+         
+        }
+        @keyframes animate{
+            0%{
+                transform: translateY(100vh) scale(0);
+            }
+            25%{
+                transform: translateY(100vh) scale(0);
+            }
+            75%{
+                transform: translateY(100vh) scale(0);
+            }
+           100%{
+                transform: translateY(100vh) scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+ <div class="container">
+    <div class="bubbles">
+        
+        <span style="--i:11"></span>
+        <span style="--i:12"></span>
+        <span style="--i:24"></span>
+        <span style="--i:10"></span>
+        <span style="--i:14"></span>
+        <span style="--i:23"></span>
+        <span style="--i:18"></span>
+        <span style="--i:16"></span>
+        <span style="--i:19"></span>
+        <span style="--i:20"></span>
+        <span style="--i:22"></span>
+        <span style="--i:25"></span>
+        <span style="--i:23"></span>
+        <span style="--i:18"></span>
+        <span style="--i:21"></span>
+        <span style="--i:15"></span>
+        <span style="--i:13"></span>
+        <span style="--i:26"></span>
+        <span style="--i:17"></span>
+        <span style="--i:13"></span>
+        <span style="--i:26"></span>
+        
+    </div>
+    
+ </div>   
+</body>
+</html>

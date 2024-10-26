@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+        selection{
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: aliceblue;
+            perspective: 1000px;
+        }
+        selection::before{
+            content: ;
+            position: absolute;
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            transform: translate(-150px, -100px);
+            background: linear-gradient(90deg,black,yellow);
+
+        }
+        selection::after{
+            content: ;
+            position: absolute;
+            height: 240px;
+            width: 240px;
+            border-radius: 50%;
+            transform: translate(-150px, -100px);
+            background: linear-gradient(90deg,black,yellow);
+
+        }
+        .container{
+            position: relative;
+            height: 225px;
+            width: 375px;
+            z-index: 100;
+            transition: 0.6s;
+            transform-style:preserve-3d ;
+        }
+        .container:hover{
+            transform:rotate(180deg);
+
+        }
+        .container .card{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            padding: 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(25px);
+            background: rgba(red, green, blue, alpha);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+            border: 1px solid rgba(225,255,255,0.1);
+            backface-visibility: hidden;
+
+        }
+        .front-face header,.front-face .logo{
+            display: flex;
+            align-items: center;
+        }
+        .front-face header{
+            justify-content: space-between;
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="card front-face">
+            <header> 
+            <span class="logo">
+        <img src="C:\Users\vivek\Desktop\Mastercard_2019_logo.svg.png" alt=""/>
+        <h5>Master Card</h5>
+    </span>
+<img src="C:\Users\vivek\Desktop\png-clipart-electronic-component-electronics-integrated-circuit-electronic-components-mobile-phone-chip-material-template-text-thumbnail.png"
+</header>  
+<div class="card-details">
+    <div class="name-number">
+        <h6>card number</h6>
+        <h5 class="number">4567 5678 5688</h5>
+        <h5 class="name">amit kumar</h5>
+        <div class="valid-date">
+            <h6>valid</h6>
+            <h5>10/28</h5>
+        </div>
+        </div>
+    </div>
+</div> 
+<div class="card back-face">
+    <h6>axcvbnm,thdhnxv</h6>
+    <span class="magenit-strip"></span>
+    <div class="sign"><i>658</i></div>
+    <h5>if card is not found ok</h5>
+</div> 
+
+</div>
+</selection>
+</body>
+</html>

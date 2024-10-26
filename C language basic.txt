@@ -1,0 +1,68 @@
+programming:> programming is tha medium, communicate between user and computer ,
+computer 0,1 
+human language :hindi english, bhojpuri
+low lavel language:
+medium
+high lavel:
+(c,c++,java,python,)
+1.english
+2.user freindly
+
+translator:
+translator is a software which convert high lavel source code to low lavel source code
+1.compiler:compile whole source code at once 
+2.interpreter:line by line code exucate
+
+C langauage:
+
+daveloped by :denish ritchi   
+year:1972
+where: bell labortories
+
+ANSI:1978
+
+tockens:
+variables:
+int a=5;
+int A1;
+
+constent:
+int a=6:
+32 ketwords
+int auto; wrong 
+
+Data type: format specifier
+int    %d
+char   %c
+float  %f
+
+
+OPerators:
+ c=a+b;
+
+1.Arithmatic opertor:+-*/%
+
+2.Relational opertor:=>><==!+
+
+3.LOgical opertor: && || !
+
+4.Assignmet opertor:a=7,a+=8
+
+5.Implement,decrement:
+++a ,a++, --aa_
+
+6.Ternary opertor:
+Int large=(a>b)?a:b;
+Functiom:
+1.Predefine function : printf(), scanf(), gets(),puts()
+
+2. User define function : sum(){    }
+
+
+#include<stdio.h>
+int main()
+{
+printf("hyyy");
+Return 0;
+}
+

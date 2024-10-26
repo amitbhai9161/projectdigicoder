@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar img {
+            height: 40px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .main-content {
+            width: 600px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .post {
+            border-bottom: 1px solid #dbdbdb;
+            padding: 15px;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .post img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .post-content {
+            padding: 10px 0;
+        }
+        .post-content p {
+            margin: 5px 0;
+        }
+        .post-content .username {
+            font-weight: bold;
+        }
+        .post-content .description {
+            color: #555;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .sidebar {
+            width: 300px;
+            margin-left: 20px;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #dbdbdb;
+            padding-bottom: 10px;
+        }
+        .sidebar img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="C:\Users\vivek\Desktop\Reminihttps://upload.wikimedia.org/wikipedia/commons/2/2c/Instagram_logo_2016.png" alt="User A\images.jfif">
+        <input type="text" placeholder="Search" style="padding: 5px; border: 1px solid #dbdbdb; border-radius: 5px;">
+        <video autoplay src="C:\Users\vivek\Desktop\VID_54950616_111716_654.mp4" style="height: 40px; border-radius: 50%;">
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="post">
+                <video autoplay controls src="C:\Users\vivek\Desktop\VID_54950616_111716_654.mp4" width="400" height="370"></video>
+                <div class="post-content">
+                    <p class="username">User1</p>
+                    <p class="description">This is a sample description for the post.</p>
+                </div>
+                <div class="post-actions">
+                    <button>❤️</button>
+                    <button>💬</button>
+                    <button>📤</button>
+                </div>
+            </div>
+            <div class="post">
+                <img src="C:\Users\vivek\Desktop\Remini\1714073042451.jpg">
+                <div class="post-content">
+                    <p class="username">User2</p>
+                    <p class="description">Another sample description for a different post.</p>
+                </div>
+                <div class="post-actions">
+                    <button>❤️</button>
+                    <button>💬</button>
+                    <button>📤</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h2>Suggestions for you</h2>
+            <img src="C:\Users\vivek\Desktop\Remini\1694094164810.jpg">
+            <img src="C:\Users\vivek\Desktop\Remini\digicoders_logo.jfif">
+            <img src="C:\Users\vivek\Desktop\Remini\1694094164810.jpg">
+        </div>
+    </div>
+    <video id="autoplay"></video>
+</body>
+</html>

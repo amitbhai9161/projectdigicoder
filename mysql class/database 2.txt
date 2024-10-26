@@ -1,0 +1,633 @@
+database 2
+
+
+Setting environment for using XAMPP for Windows.
+Amit@AMIT c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database ak10
+    -> ;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use ak10;
+Database changed
+MariaDB [ak10]> create table student
+    -> (
+    -> stuid int(5)primary key auto_increment,
+    -> stuname varchar(30),
+    -> stucity varchar(40)
+    -> );
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [ak10]> desc student;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| stuid   | int(5)      | NO   | PRI | NULL    | auto_increment |
+| stuname | varchar(30) | YES  |     | NULL    |                |
+| stucity | varchar(40) | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+3 rows in set (0.025 sec)
+
+MariaDB [ak10]> insert into student(stuid,stuname,stucity)values(1,'amit','basti'),(2,'shiva','bhanpur'),(3,'santosh','lucknow'),(4,'ashish','bansi');
+Query OK, 4 rows affected (0.089 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [ak10]> select * from stu;
+ERROR 1146 (42S02): Table 'ak10.stu' doesn't exist
+MariaDB [ak10]> select * from student;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     3 | santosh | lucknow |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]> select stuname from student;
++---------+
+| stuname |
++---------+
+| amit    |
+| shiva   |
+| santosh |
+| ashish  |
++---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]> select stucity from student;
++---------+
+| stucity |
++---------+
+| basti   |
+| bhanpur |
+| lucknow |
+| bansi   |
++---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select stuid from;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [ak10]> select stuid from student;
++-------+
+| stuid |
++-------+
+|     1 |
+|     2 |
+|     3 |
+|     4 |
++-------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where stuid=2;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select stuid,stucity from student where stuname='amit';
++-------+---------+
+| stuid | stucity |
++-------+---------+
+|     1 | basti   |
++-------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid in(1,3);
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     3 | santosh | lucknow |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid=2 and stuname='shiva';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+1 row in set (0.003 sec)
+
+MariaDB [ak10]> select * from student where stuid=3 or stuname='amit';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     3 | santosh | lucknow |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where not stuid='3';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [ak10]> select * from student order by stuid desc;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     4 | ashish  | bansi   |
+|     3 | santosh | lucknow |
+|     2 | shiva   | bhanpur |
+|     1 | amit    | basti   |
++-------+---------+---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]>  select * from student order by stuid asc;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     3 | santosh | lucknow |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select max(stuid) from student;
++------------+
+| max(stuid) |
++------------+
+|          4 |
++------------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select min(stud) from student;
+ERROR 1054 (42S22): Unknown column 'stud' in 'field list'
+MariaDB [ak10]> select min(stuid) from student;
++------------+
+| min(stuid) |
++------------+
+|          1 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select avg(stuid) from student;
++------------+
+| avg(stuid) |
++------------+
+|     2.5000 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select avg(stuid) as average_stuname from student;
++-----------------+
+| average_stuname |
++-----------------+
+|          2.5000 |
++-----------------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select count(*) as total from student;
++-------+
+| total |
++-------+
+|     4 |
++-------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select sum(stuid) as total sum from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'sum from student' at line 1
+MariaDB [ak10]>  select sum(stuid) as total_sum from student;
++-----------+
+| total_sum |
++-----------+
+|        10 |
++-----------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where stuname like 'am%';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
++-------+---------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]>
+
+
+
+
+2.
+
+Setting environment for using XAMPP for Windows.
+Amit@AMIT c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database ak10
+    -> ;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use ak10;
+Database changed
+MariaDB [ak10]> create table student
+    -> (
+    -> stuid int(5)primary key auto_increment,
+    -> stuname varchar(30),
+    -> stucity varchar(40)
+    -> );
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [ak10]> desc student;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| stuid   | int(5)      | NO   | PRI | NULL    | auto_increment |
+| stuname | varchar(30) | YES  |     | NULL    |                |
+| stucity | varchar(40) | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+3 rows in set (0.025 sec)
+
+MariaDB [ak10]> insert into student(stuid,stuname,stucity)values(1,'amit','basti'),(2,'shiva','bhanpur'),(3,'santosh','lucknow'),(4,'ashish','bansi');
+Query OK, 4 rows affected (0.089 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [ak10]> select * from stu;
+ERROR 1146 (42S02): Table 'ak10.stu' doesn't exist
+MariaDB [ak10]> select * from student;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     3 | santosh | lucknow |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]> select stuname from student;
++---------+
+| stuname |
++---------+
+| amit    |
+| shiva   |
+| santosh |
+| ashish  |
++---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]> select stucity from student;
++---------+
+| stucity |
++---------+
+| basti   |
+| bhanpur |
+| lucknow |
+| bansi   |
++---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select stuid from;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [ak10]> select stuid from student;
++-------+
+| stuid |
++-------+
+|     1 |
+|     2 |
+|     3 |
+|     4 |
++-------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where stuid=2;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select stuid,stucity from student where stuname='amit';
++-------+---------+
+| stuid | stucity |
++-------+---------+
+|     1 | basti   |
++-------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid in(1,3);
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     3 | santosh | lucknow |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid=2 and stuname='shiva';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+1 row in set (0.003 sec)
+
+MariaDB [ak10]> select * from student where stuid=3 or stuname='amit';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     3 | santosh | lucknow |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where not stuid='3';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [ak10]> select * from student order by stuid desc;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     4 | ashish  | bansi   |
+|     3 | santosh | lucknow |
+|     2 | shiva   | bhanpur |
+|     1 | amit    | basti   |
++-------+---------+---------+
+4 rows in set (0.002 sec)
+
+MariaDB [ak10]>  select * from student order by stuid asc;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     3 | santosh | lucknow |
+|     4 | ashish  | bansi   |
++-------+---------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select max(stuid) from student;
++------------+
+| max(stuid) |
++------------+
+|          4 |
++------------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select min(stud) from student;
+ERROR 1054 (42S22): Unknown column 'stud' in 'field list'
+MariaDB [ak10]> select min(stuid) from student;
++------------+
+| min(stuid) |
++------------+
+|          1 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select avg(stuid) from student;
++------------+
+| avg(stuid) |
++------------+
+|     2.5000 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select avg(stuid) as average_stuname from student;
++-----------------+
+| average_stuname |
++-----------------+
+|          2.5000 |
++-----------------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> select count(*) as total from student;
++-------+
+| total |
++-------+
+|     4 |
++-------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select sum(stuid) as total sum from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'sum from student' at line 1
+MariaDB [ak10]>  select sum(stuid) as total_sum from student;
++-----------+
+| total_sum |
++-----------+
+|        10 |
++-----------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where stuname like 'am%';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
++-------+---------+---------+
+1 row in set (0.002 sec)
+
+MariaDB [ak10]> insert into student(stuid,stuname,stucity)values(5,'rukmani','kolkata'),(6,'pradeep','jaipur'),(7,'d ravichandran','bombay');
+Query OK, 3 rows affected (0.010 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [ak10]> select * from student;
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     1 | amit           | basti   |
+|     2 | shiva          | bhanpur |
+|     3 | santosh        | lucknow |
+|     4 | ashish         | bansi   |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+7 rows in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where like'rk%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'like'rk%'' at line 1
+MariaDB [ak10]> select * from student where like'ru%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'like'ru%'' at line 1
+MariaDB [ak10]> select * from student where stuname like 'ru';
+Empty set (0.002 sec)
+
+MariaDB [ak10]>  select * from student where stuname like 'ru%';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     5 | rukmani | kolkata |
++-------+---------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [ak10]> select * from student where not stucity='bombay';
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     3 | santosh | lucknow |
+|     4 | ashish  | bansi   |
+|     5 | rukmani | kolkata |
+|     6 | pradeep | jaipur  |
++-------+---------+---------+
+6 rows in set (0.002 sec)
+
+MariaDB [ak10]> update student set stuname='amit' where stuid=4;
+Query OK, 1 row affected (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [ak10]> select * from stu;
+ERROR 1146 (42S02): Table 'ak10.stu' doesn't exist
+MariaDB [ak10]> select * from student;
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     1 | amit           | basti   |
+|     2 | shiva          | bhanpur |
+|     3 | santosh        | lucknow |
+|     4 | amit           | bansi   |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+7 rows in set (0.002 sec)
+
+MariaDB [ak10]> update student set stuname='kavita',stucity='delhi' where stuid=3;
+Query OK, 1 row affected (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [ak10]> select * from student;
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     1 | amit           | basti   |
+|     2 | shiva          | bhanpur |
+|     3 | kavita         | delhi   |
+|     4 | amit           | bansi   |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+7 rows in set (0.001 sec)
+
+MariaDB [ak10]> delete from student where stuid=3;
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [ak10]> select * from student;
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     1 | amit           | basti   |
+|     2 | shiva          | bhanpur |
+|     4 | amit           | bansi   |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+6 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid between 1 and 3;\
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]>  select * from student where stuid between 1 and 4;\
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
+|     4 | amit    | bansi   |
++-------+---------+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [ak10]>  select * from student where stuid between 4 and 7;\
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     4 | amit           | bansi   |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> select distinct(stucity) from student;
++---------+
+| stucity |
++---------+
+| basti   |
+| bhanpur |
+| bansi   |
+| kolkata |
+| jaipur  |
+| bombay  |
++---------+
+6 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid limit 2;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     1 | amit    | basti   |
+|     2 | shiva   | bhanpur |
++-------+---------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [ak10]> select * from student where stuid 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '5' at line 1
+MariaDB [ak10]> delete from student where stuid in(1,4);
+Query OK, 2 rows affected (0.004 sec)
+
+MariaDB [ak10]> select * from student;
++-------+----------------+---------+
+| stuid | stuname        | stucity |
++-------+----------------+---------+
+|     2 | shiva          | bhanpur |
+|     5 | rukmani        | kolkata |
+|     6 | pradeep        | jaipur  |
+|     7 | d ravichandran | bombay  |
++-------+----------------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [ak10]> delete from student where stuid in(2,7);
+Query OK, 2 rows affected (0.005 sec)
+
+MariaDB [ak10]> select * from student;
++-------+---------+---------+
+| stuid | stuname | stucity |
++-------+---------+---------+
+|     5 | rukmani | kolkata |
+|     6 | pradeep | jaipur  |
++-------+---------+---------+
+2 rows in set (0.001 sec)
